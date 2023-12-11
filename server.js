@@ -157,6 +157,7 @@ app.post('/register', async (req, res) => {
 
             req.session.isRegistering = await true;
             req.session.phoneNo = await req.body.phone
+             req.session.userId = registerApplication._id;
             try {
                 // await sendOTP(req.body.phone)
                 // res.redirect('/otpForm')
