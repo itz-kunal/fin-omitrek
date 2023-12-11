@@ -1,3 +1,24 @@
+let sections=document.querySelectorAll('.secShow')
+let willAct=document.querySelectorAll('.willAct')
+sections.forEach((i)=>{
+    i.style.display='none'
+})
+sections[0].style.display='block';
+function showSection(e){
+    sections.forEach((i)=>{
+        i.style.display='none';
+    })
+    sections[e].style.display='block';
+    willAct.forEach((i)=>{
+        i.classList.remove('active')
+    })
+    if (window.innerWidth <=1025){
+    document.body.classList.add('sidebar-gone')
+    document.body.classList.remove('sidebar-show')
+    }
+    willAct[e].classList.add('active')
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
     const response = await fetch('/updAdmin');
     if (!response.ok) {
