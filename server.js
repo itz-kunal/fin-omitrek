@@ -161,6 +161,7 @@ app.post('/register', async (req, res) => {
                 // await sendOTP(req.body.phone)
                 // res.redirect('/otpForm')
                 registerApplication.save()
+                req.session.isAuthenticated=true;   
                 // res.redirect('/user')
                 res.redirect('/user?register=success');
                 const userRefBy = registerApplication.referredBy  ;
