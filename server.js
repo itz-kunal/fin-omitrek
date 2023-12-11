@@ -61,7 +61,7 @@ app.get('/paymentAmount', (req, res) => {
 })
 
 // post methods which require data fetching and etc
-const dburl = 'mongodb://127.0.0.1:27017/omitrek'
+const dburl = 'mongodb+srv://techboothadmin:vyUnsD0zpdPjVNQd@cluster0.gtllxds.mongodb.net/omitrektrial?retryWrites=true&w=majority'
 const db = mongoose.connect(dburl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
