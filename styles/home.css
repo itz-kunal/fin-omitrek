@@ -1,0 +1,201 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(236, 236, 236, 0.724);
+    font-family: 'Capriola', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+:root {
+    --primary-color: #0094dc;
+}
+
+/* ----------  Navbar section  ---------- */
+
+.navbar {
+    height: 80px;
+    background-color: var(--primary-color);
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.navbar a {
+    font-size: 16px;
+    color: #000;
+}
+
+.navbar .navbar-brand img {
+    width: 100px;
+}
+
+.input-group {
+    width: 600px;
+}
+
+.input-group span,
+.input-group input {
+    background-color: #F0F5FF;
+    border: none;
+    font-size: 20px;
+}
+
+.input-group input:focus {
+    background-color: #F0F5FF;
+    box-shadow: unset;
+    border: none;
+    outline: none;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    border: none;
+    outline: none;
+    box-shadow: unset;
+}
+
+.tringle-up {
+    height: 0;
+    width: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #f9f9f9;
+    position: relative;
+    top: -25px;
+    left: 30%;
+}
+
+.Hoverlinks {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    min-width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.loginlinks:hover .Hoverlinks {
+    display: block;
+}
+
+/* ----------  Category section  ---------- */
+
+.shadow {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.card1 {
+    text-align: center;
+    width: 150px;
+    border: unset !important;
+}
+
+
+.card1 img {
+    transition: all 0.3s ease-in-out;
+    width: 100px;
+}
+
+@media (max-width: 460px) {
+    .card1 {
+        text-align: center;
+        width: 100px;
+        border: unset !important;
+    }
+
+
+    .card1 img {
+        transition: all 0.3s ease-in-out;
+        width: 80px;
+    }
+}
+
+.card1 img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Products design */
+.scrolling-wrapper {
+    overflow-x: auto;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.card-block {
+    background-color: #fff;
+    border: 0.3px solid rgba(193, 189, 189, 0.494);
+    align-items: center;
+}
+
+.card img {
+    transition: all 0.3s ease-in-out;
+    height: 140px;
+}
+
+.card img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 991px) {
+    .card img {
+        height: 120px;
+    }
+}
+
+.e-name {
+    color: black;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.e-price {
+    color: green;
+    font-size: 17px;
+    font-family: revert;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* 06 Footer Design */
+.footer {
+    background-color: #000;
+    padding: 25px 0 10px 0;
+}
+
+.footer .footer-link {
+    font-size: 1rem;
+    color: #fff;
+    padding: 0 1.875rem;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.footer .footer-link:hover {
+    color: #0094dc;
+}
+
+.footer a i {
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0 1rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.footer a i:hover {
+    color: #0094dc;
+}

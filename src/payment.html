@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        div {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Payment Details</h1>
+        <p>Thank you for your purchase!</p>
+        <p>Please make the payment using the following options:</p>
+        
+        <!-- UPI Details -->
+        <p>UPI: your-upi-id@example.com</p>
+        <h3>Pay <span id="payableAmount">₹44999</span></h3>
+
+        <!-- QR Code Image -->
+        <img src="../images/paymentQr.jpg" alt="QR Code">
+
+        <p>Important: Your payment approval may take up to 24 hours.</p>
+        <p>Your wallet will be updated once the payment is approved.</p>
+
+        <!-- Additional instructions or information can be added here -->
+
+        <!-- You can also include a button or link to navigate back to your application or home page -->
+        <a href="/">Go back to the home page</a>
+    </div>
+    <script src="/script/index.js"></script>
+    <script>
+        // Function to update payableAmount
+        function updatePayableAmount(amount) {
+            document.getElementById('payableAmount').textContent = '₹' + amount;
+        }
+
+        // Check for query parameter and update payableAmount
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        if (amount !== null) {
+            updatePayableAmount(amount);
+        }
+    </script>
+</body>
+</html>

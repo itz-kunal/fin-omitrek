@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Omni Treck | Referral</title>
+    <link rel="shortcut icon" href="/images/omifav.png" type="image/x-icon">
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="/def-assets/bootstrap.min.css">
+    <link rel="stylesheet" href="/def-assets/all.min.css">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/def-assets/fontmuli.css">
+    <link rel="stylesheet" href="/def-assets/style.css">
+    <link rel="stylesheet" href="/def-assets/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="/def-assets/pace-theme-minimal.css">
+    <link rel="stylesheet" href="/def-assets/toastr.min.css">
+
+
+    <!-- General JS Scripts -->
+    <script src="/def-assets/jquery-3.4.1.min.js.download"></script>
+    <script src="/def-assets/popper.min.js.download"></script>
+    <script src="/def-assets/bootstrap.min.js.download"></script>
+    <script src="/def-assets/jquery.nicescroll.min.js.download"></script>
+    <script src="/def-assets/moment.min.js.download"></script>
+    <script src="/def-assets/pace.min.js.download"></script>
+    <script src="/def-assets/toastr.min.js.download"></script>
+    <script src="/def-assets/bootbox.min.js.download"></script>
+
+    <!-- JS Libraies -->
+    <script src="/def-assets/stisla.js.download"></script>
+
+    <!-- include summernote css/js -->
+    <link href="/def-assets/summernote-bs4.css" rel="stylesheet">
+    <script src="/def-assets/summernote-bs4.min.js.download"></script>
+
+
+
+    <style type="text/css">
+        .paymentStat{
+            padding: 2px;
+            border-radius: 50px;
+            background-color: red;
+            color: white;
+        }
+        .paymentStat:nth-child(2){margin-top: 5px;
+            background-color: rgb(7, 207, 7);
+        }
+        a {
+            color: white;
+            cursor: pointer;
+
+        }
+
+        body.search-show:before,
+        body.sidebar-show:before {
+            content: '';
+            position: fixed;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0;
+            z-index: 891;
+            -webkit-animation-name: fadeinbackdrop;
+            animation-name: fadeinbackdrop;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        /* Chart.js */
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: .99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 1ms
+        }
+
+        .chartjs-size-monitor,
+        .chartjs-size-monitor-expand,
+        .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1
+        }
+
+        .chartjs-size-monitor-expand>div {
+            position: absolute;
+            width: 1000000px;
+            height: 1000000px;
+            left: 0;
+            top: 0
+        }
+
+        .chartjs-size-monitor-shrink>div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: 0;
+            top: 0
+        }
+    </style>
+</head>
+
+<body class="pace-done sidebar-mini">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99"
+            style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg">
+            </div>
+            <!-- ----------------------Nav Bar---------------------------- -->
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <div class="mr-auto">
+                    <ul class="navbar-nav mr-3" id="open-slide" onclick="openslide()">
+                        <li><a data-toggle="sidebar" class="nav-link nav-link-lg" style="color: white;"><i
+                                    class="fas fa-bars"></i></a></li>
+                    </ul>
+                </div>
+                <!-- <ul class="navbar-nav">
+                    <li>
+                        <div class="badge badge-danger">Demo Mode</div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li>
+                        <div class="badge badge-danger">Debug Mode</div>
+                    </li>
+                </ul> -->
+                <ul class="navbar-nav navbar-right">
+                    <li class="dropdown dropdown-list-toggle" onclick="showDropdown(this ,0)">
+                        <a data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
+                            <div class="d-block d-md-none badge badge-light"><span class="text-uppercase">en</span>
+                            </div>
+                            <div class="d-none d-md-block badge badge-light">English</div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-title">Language</div>
+                            <a class="dropdown-item has-icon"><i class="fas fa-check"></i> English</a>
+                            <a class="dropdown-item has-icon"><i class="fas fa-minus"></i> Hindi</a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown" onclick="showDropdown(this,1)"><a data-toggle="dropdown"
+                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="/images/default-avtar.jpg" class="rounded-circle mr-1">
+                            <div class="d-sm-none d-lg-inline-block"><span class="text-capitalize">demo</span></div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-title">Logged in 4 minutes</div>
+                            <a class="dropdown-item has-icon">
+                                <i class="far fa-user-circle"></i> Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item has-icon text-danger">
+                                <i class="fas fa-door-open"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- --------------------------Side Slider-------------------------------- -->
+            <div class="main-sidebar" tabindex="1" style="overflow: hidden; outline: none;">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a><img src="/images/omilogo.png" alt="logo" class="img-fluid w-25"></a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a>OMNI</a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Main</li>
+                        <li class="willAct active" onclick="showSection(0)"><a class="nav-link" data-toggle="tooltip"
+                                data-original-title="Dashboard">
+                                <i class="fas fa-users"></i><span>Users</span></a>
+                        </li>
+                        <!-- <li><a class="nav-link" href="/" data-toggle="tooltip"
+                            data-original-title="Dashboard">
+                            <i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+                    </li> -->
+                        <li class="willAct" onclick="showSection(1)"><a  class="nav-link" data-toggle="tooltip" data-original-title="store">
+                            <i class="fas fa-hand-holding-usd"></i><span>Withdrawals</span></a>
+                        </li>
+                        <li class="willAct" onclick="showSection(2)"><a  class="nav-link" data-toggle="tooltip"
+                                data-original-title="referral">
+                                <i class="fas fa-person-circle-check"></i><span>Approvements</span></a>
+                        </li>
+                        <!-- <li class="willAct" onclick="showSection(3),updateCards()"><a  class="nav-link" data-toggle="tooltip"
+                                data-original-title="withdraw">
+                                <i class="fas fa-hand-holding-usd"></i><span>Withdraw</span></a>
+                        </li>
+                        <li class="willAct" onclick="showSection(4)"><a  class="nav-link" data-toggle="tooltip" data-original-title="profile">
+                                <i class="fas fa-user-cog"></i><span>Profile</span></a>
+                        </li> -->
+
+                    </ul>
+
+                    <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+                        <a href="" class="btn btn-danger btn-lg btn-block btn-icon-split">
+                            <i class="fas fa-door-open"></i> Logout
+                        </a>
+                    </div>
+
+                </aside>
+            </div>
+
+            <!------------------------ Main Content -------------------------->
+            <div class="main-content" style="min-height: 592px;">
+
+                 <!-- --------user------- -->
+                 <section class="section secShow">
+
+                    <div class="section-header">
+                        <h1><i class="fa fa-fw fa-chart-line"></i> Users /h1>
+                    </div>
+
+                    <div class="section-body">
+                        <!-- =======================Upper Earning and referrals========================== -->
+                        <!-- <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <div class="card card-statistic-1">
+                                    <div class="card-icon bg-info">
+                                        <i class="far fa-paper-plane"></i>
+                                    </div>
+                                    <div class="card-wrap">
+                                        <div class="card-header">
+                                            <h4>Members</h4>
+                                        </div>
+                                        <div class="card-body" id="position">
+                                            Left <div class="text-small text-muted">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <div class="card card-statistic-1">
+                                    <a href="">
+                                        <div class="card-icon bg-info">
+                                            <i class="far fa-handshake"></i>
+                                        </div>
+                                    </a>
+                                    <div class="card-wrap" id="referralCount">
+                                        <div class="card-header">
+                                            <h4>Revenue</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            8 <div class="text-small text-muted">
+                                                Personal: 259 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <div class="card card-statistic-1">
+                                    <a href="#">
+                                        <div class="card-icon bg-warning">
+                                            <i class="far fa-money-bill-alt"></i>
+                                        </div>
+                                    </a>
+                                    <div class="card-wrap">
+                                        <div class="card-header">
+                                            <h4>Earning</h4>
+                                        </div>
+                                        <div class="card-body" id="dashboardEarn">
+                                            ₹3468810<div class="text-small text-muted" id="dashboardWallet">
+                                                Wallet: ₹550579 </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-body">
+    
+                            <form method="get">
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h4><i class="fa fa-fw fa-search"></i> Find Members</h4>
+                                        <div class="card-header-action">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-info dropdown-toggle"
+                                                    data-toggle="dropdown">
+                                                    Plan <span class="badge badge-light">Tech Lord</span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item">Regular</a><a class="dropdown-item">Silver</a><a class="dropdown-item">Silver
+                                                    </a><a class="dropdown-item">Gold</a>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+    
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" name="name" id="name" class="form-control" value=""
+                                                        placeholder="Enter referral name">
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Phone No.</label>
+                                                    <input type="text" name="username" id="username" class="form-control"
+                                                        value="" placeholder="Enter referral username">
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" name="email" id="useremail" class="form-control"
+                                                        value="" placeholder="Enter referral email">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-whitesmoke">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="float-md-right">
+                                                    <a 
+                                                        class="btn btn-warning"><i class="fa fa-fw fa-redo"></i> Reset</a>
+                                                    <button type="submit" name="submit" value="search" id="submit"
+                                                        class="btn btn-primary"><i class="fa fa-fw fa-search"></i>
+                                                        Search</button>
+                                                </div>
+                                                <div class="d-block d-sm-none">
+                                                    &nbsp;
+                                                </div>
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <input type="hidden" name="hal" value="userlist">
+                            </form>
+     -->
+                            <hr>
+    
+                            <div class="clearfix"></div>
+    
+                            <!-- <div class="row marginTop">
+                                <div class="col-sm-12 paddingLeft pagerfwt">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <ul class="pagination pagination-sm">
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link">All</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-5 text-right">
+                                            <span class="d-none d-md-block">
+                                                <span class="text-muted">Show:</span> <select
+                                                    class="border form-control-sm text-muted">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <option value="150">150</option>
+                                                    <option value="200">200</option>
+                                                    <option value="All">All</option>
+                        
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+     -->
+                            <div class="clearfix"></div>
+    
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col" nowrap=""><a
+                                                    href="#"><i
+                                                        class="fa fa-fw fa-arrows-alt-v"></i></a>Username</th>
+                                            <th scope="col" nowrap=""><a
+                                                    href="#"><i
+                                                        class="fa fa-fw fa-arrows-alt-v"></i></a>Phone No.</th>
+                                            <th scope="col" nowrap=""><a
+                                                    href="#"><i class="fa fa-fw fa-arrows-alt-v"></i></a>Email</th>
+                                            <th scope="col" class="text-center">Balance</th>
+                                            <th scope="col" class="text-center">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="addAdmindata">
+                <!-- -----------------------referral data here----------------------------- -->
+<!--                 <tr>
+    
+                    <th scope="row">1</th>
+                    <td data-toggle="tooltip"
+                    data-original-title="2023-08-25 01:58:01">25 Aug 2023</td>
+                    <td data-toggle="tooltip" title="" data-original-title="rr rr">rrrr</td>
+                    <td data-toggle="tooltip" title="" data-original-title="r**@rr.com">r**@rr.com
+                    </td>
+                    <td align="center" nowrap="">₹578
+                    </td>
+                    <td align="center" nowrap="">
+                        <figure class="avatar mr-2 avatar-sm">
+                            <img src="/images/referrallogo.jpg" alt=".">
+                            <i class="fa fa-id-badge text-success avatar-icon" data-toggle="tooltip"
+                                title="" data-original-title="Account - Active"></i>
+                        </figure>
+                        <span class="badge badge-success" data-toggle="tooltip" title=""
+                            data-original-title="Regular - Active"><i
+                                class="fa fa-fw fa-check"></i></span>
+                    </td>
+    
+                </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tabla">yoyo </div>
+    
+                            <div class="clearfix"></div>
+    
+                            <div class="row marginTop">
+                                <div class="col-sm-12 paddingLeft pagerfwt">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <ul class="pagination pagination-sm">
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="/demo/unimatrix/member/index.php?page=1&amp;ipp=All&amp;hal=userlist">All</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-5 text-right">
+                                            <span class="d-none d-md-block">
+                                                <span class="text-muted">Show:</span> <select
+                                                    class="border form-control-sm text-muted"
+                                                    onchange="window.location='/demo/unimatrix/member/index.php?page=1&amp;ipp='+this[this.selectedIndex].value+'&amp;hal=userlist';return false">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <option value="150">150</option>
+                                                    <option value="200">200</option>
+                                                    <option value="All">All</option>
+                                                </select> <span class="text-muted">Page:</span> <select
+                                                    class="border form-control-sm text-muted"
+                                                    onchange="window.location='/demo/unimatrix/member/index.php?page='+this[this.selectedIndex].value+'&amp;ipp=15&amp;hal=userlist';return false">
+                                                    <option value="1" selected="">1</option>
+                                                </select> Total: 8 </span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+    
+                        </div>
+
+<!--                     </div> -->
+                </section>
+<!--             hello  div  -->
+<!--             there's no  div here but why browser closing it here -->
+<!--             div closing looks like </div> -->
+<!--         </div> -->
+<!--         </div> -->
+<!--             <div></div> -->
+            
+
+                <!-- -------withdrawls-------- -->
+                <section class="section secShow">
+
+                    <div class="section-header">
+                        <h1><i class="fa fa-fw fa-users"></i> Withdrawl Requests</h1>
+                    </div>
+
+                    <div class="section-body">
+                        <hr>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Withdrawal Id</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Date</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Username</th>
+                                                    <th scope="col" nowrap=""><a
+                                                        href="#"><i
+                                                            class="fa fa-fw fa-arrows-alt-v"></i></a>Phone No.</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i class="fa fa-fw fa-arrows-alt-v"></i></a>Upi ID</th>
+                                        <th scope="col" class="text-center">Amount</th>
+                                        <th scope="col" class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody  class="Paymentdata">
+            <!-- -----------------------withdrawls data here----------------------------- -->
+<!--             <tr>
+
+                <th scope="row">1</th>
+                <td data-toggle="tooltip"
+                data-original-title="2023-08-25 01:58:01">25 Aug 2023</td>
+                <td data-toggle="tooltip" title="" data-original-title="rr rr">rrrr</td>
+                <td data-toggle="tooltip" title="" data-original-title="r**@rr.com">r**@rr.com
+                </td>
+                <td align="center" nowrap="">₹450
+                </td>
+                <td  align="center"  nowrap="">
+                   <div class="paymentStat" >Processing</div>
+                   <div class="paymentStat" >Approve</div>
+                </td>
+               
+
+            </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="row marginTop">
+                            <div class="col-sm-12 paddingLeft pagerfwt">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <ul class="pagination pagination-sm">
+                                            <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li> -->
+                                            <li class="page-item"><a class="page-link"
+                                                  >All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 text-right">
+                                        <span class="d-none d-md-block">
+                                            <span class="text-muted">Show:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page=1&amp;ipp='+this[this.selectedIndex].value+'&amp;hal=userlist';return false">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="150">150</option>
+                                                <option value="200">200</option>
+                                                <option value="All">All</option>
+                                            <!-- </select> <span class="text-muted">Page:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page='+this[this.selectedIndex].value+'&amp;ipp=15&amp;hal=userlist';return false">
+                                                <option value="1" selected="">1</option>
+                                            </select> Total: 8 </span> -->
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- ------- Transations faltu ka -------- -->
+                <section class="">
+
+                    <div class="section-header">
+                        <h1><i class="fa fa-fw fa-users"></i>Payment Approvement</h1>
+                    </div>
+
+                    <div class="section-body">
+                        <hr>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Transation Id</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Date</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Username</th>
+                                                    <th scope="col" nowrap=""><a
+                                                        href="#"><i
+                                                            class="fa fa-fw fa-arrows-alt-v"></i></a>Phone No.</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i class="fa fa-fw fa-arrows-alt-v"></i></a>Upi ID</th>
+                                        <th scope="col" class="text-center">Amount</th>
+                                        <th scope="col" class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            <!-- -----------------------referral data here----------------------------- -->
+            <tr>
+                <th scope="row">1</th>
+                <td data-toggle="tooltip"
+                data-original-title="2023-08-25 01:58:01">25 Aug 2023</td>
+                <td data-toggle="tooltip" title="" data-original-title="rr rr">rrrr</td>
+                <td data-toggle="tooltip" title="" data-original-title="r**@rr.com">r**@rr.com
+                </td>
+                <td align="center" nowrap="">₹450
+                </td>
+                <td  align="center"  nowrap="">
+                   <div class="paymentStat" >Processing</div>
+                   <div class="paymentStat">Done</div>
+                </td>
+               
+
+            </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="row marginTop">
+                            <div class="col-sm-12 paddingLeft pagerfwt">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <ul class="pagination pagination-sm">
+                                            <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li> -->
+                                            <li class="page-item"><a class="page-link"
+                                                  >All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 text-right">
+                                        <span class="d-none d-md-block">
+                                            <span class="text-muted">Show:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page=1&amp;ipp='+this[this.selectedIndex].value+'&amp;hal=userlist';return false">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="150">150</option>
+                                                <option value="200">200</option>
+                                                <option value="All">All</option>
+                                            <!-- </select> <span class="text-muted">Page:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page='+this[this.selectedIndex].value+'&amp;ipp=15&amp;hal=userlist';return false">
+                                                <option value="1" selected="">1</option>
+                                            </select> Total: 8 </span> -->
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ------- Transations -------- -->
+                <section class="section secShow">
+
+                    <div class="section-header">
+                        <h1><i class="fa fa-fw fa-users"></i>Payment Approvement</h1>
+                    </div>
+
+                    <div class="section-body">
+                        <hr>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Transation Id</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Date</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i
+                                                    class="fa fa-fw fa-arrows-alt-v"></i></a>Username</th>
+                                                    <th scope="col" nowrap=""><a
+                                                        href="#"><i
+                                                            class="fa fa-fw fa-arrows-alt-v"></i></a>Phone No.</th>
+                                        <th scope="col" nowrap=""><a
+                                                href="#"><i class="fa fa-fw fa-arrows-alt-v"></i></a>Upi ID</th>
+                                        <th scope="col" class="text-center">Amount</th>
+                                        <th scope="col" class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="Paymentdata">
+            <!-- -----------------------referral data here----------------------------- -->
+<!--             <tr>
+
+                <th scope="row">1</th>
+                <td data-toggle="tooltip"
+                data-original-title="2023-08-25 01:58:01">25 Aug 2023</td>
+                <td data-toggle="tooltip" title="" data-original-title="rr rr">rrrr</td>
+                <td data-toggle="tooltip" title="" data-original-title="r**@rr.com">r**@rr.com
+                </td>
+                <td align="center" nowrap="">₹450
+                </td>
+                <td  align="center"  nowrap="">
+                   <div class="paymentStat" onclick="paymentStat(0)">Processing</div>
+                   <div class="paymentStat" onclick="paymentStat(1)">Done</div>
+                </td>
+               
+
+            </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="row marginTop">
+                            <div class="col-sm-12 paddingLeft pagerfwt">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <ul class="pagination pagination-sm">
+                                            <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li> -->
+                                            <li class="page-item"><a class="page-link"
+                                                  >All</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 text-right">
+                                        <span class="d-none d-md-block">
+                                            <span class="text-muted">Show:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page=1&amp;ipp='+this[this.selectedIndex].value+'&amp;hal=userlist';return false">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="150">150</option>
+                                                <option value="200">200</option>
+                                                <option value="All">All</option>
+                                            <!-- </select> <span class="text-muted">Page:</span> <select
+                                                class="border form-control-sm text-muted"
+                                                onchange="window.location='/demo/unimatrix/member/index.php?page='+this[this.selectedIndex].value+'&amp;ipp=15&amp;hal=userlist';return false">
+                                                <option value="1" selected="">1</option>
+                                            </select> Total: 8 </span> -->
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </section>
+
+
+
+
+                <div>heya heya</div>
+
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog" aria-labelledby=".">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                    aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="main-footer">
+                <!--
+    You are not allowed to remove this credit link unless you have right to do so
+    -->
+               <div class="footer-left">
+                    Crafted with <i class="fa fa-fw fa-heart"></i> 2023 <a
+                        href="techbooth.in">By Tech Booth </a> and mantained by
+                    <a href='rassgroups.com'>Rassgroups</a>
+                </div>
+                <div class="footer-right">
+                    <div class="d-none d-sm-block text-small">
+                        <a href="javascript:;" data-href="#" data-poptitle="Terms and Conditions"
+                            class="openPopup text-info">Terms and Conditions</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <script src="/def-assets/scripts.js.download"></script>
+    <script src="/def-assets/custom.js.download"></script>
+    <script src="/script/index.js"></script>
+    <script src="/script/admin.js"></script>
+
+
+</body>
+
+</html>

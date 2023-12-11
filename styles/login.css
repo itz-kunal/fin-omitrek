@@ -1,0 +1,42 @@
+.form-control:focus {
+    box-shadow: none;
+}
+
+.btn-primary {
+    border-radius: 0;
+    background-color: #0094dc;
+    padding: 10px 20px;
+}
+
+.login-section {
+    width: 100%;
+    min-height: 70vh;
+}
+
+.mainlogin {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.loginleft {
+    min-height: 70vh;
+    background: url(/images/login_img.png) no-repeat center bottom #0094dc;
+}
+
+.loginleft h1 {
+    font-weight: 700;
+}
+
+.loginleft h3 {
+    font-weight: 700;
+}
+
+.loginleft p {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(213, 212, 212);
+    margin: 0;
+}
+
+.loginright {
+    background-color: #fff;
+}
