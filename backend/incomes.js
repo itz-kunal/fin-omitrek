@@ -39,7 +39,7 @@ function getEarningPercentage(level) {
 function hasCouponsWorthMore(user, couponWorth) {
     if (user && user.coupons && user.coupons.length > 0) {
         // Check if any coupon is worth more than couponWorth
-        return user.coupons.some(coupon => coupon.amount >= couponWorth);
+        return user.coupons.some(coupon => coupon.amount >= couponWorth && coupon.status == 'approved');
     }
     return false;
 }
