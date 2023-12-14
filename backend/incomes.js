@@ -28,10 +28,10 @@ async function updRefIncome(data, couponWorth) {
 function getEarningPercentage(level) {
     const percentageMap = {
         1: 10,
-        2: 5,
-        3: 3,
-        4: 2,
-        5: 1
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0
     };
     return percentageMap[level] || 0;
 }
