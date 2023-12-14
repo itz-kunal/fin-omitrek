@@ -157,14 +157,14 @@ app.post('/register', async (req, res) => {
 
             req.session.isRegistering = await true;
             req.session.phoneNo = await req.body.phone
-             req.session.userId = registerApplication._id;
+             // req.session.userId = registerApplication._id;
             try {
-                // await sendOTP(req.body.phone)
-                // res.redirect('/otpForm')
-                registerApplication.save()
-                req.session.isAuthenticated=true;   
+                await sendOTP(req.body.phone)
+                res.redirect('/otpForm')
+                // registerApplication.save()
+                // req.session.isAuthenticated=true;   
                 // res.redirect('/user')
-                res.redirect('/user?register=success');
+                // res.redirect('/user?register=success');
                 const userRefBy = registerApplication.referredBy  ;
                 addRefData(registerApplication,userRefBy);
             } catch (err) {
