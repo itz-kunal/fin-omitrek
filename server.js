@@ -166,7 +166,7 @@ app.post('/register', async (req, res) => {
                 // res.redirect('/user')
                 // res.redirect('/user?register=success');
                 const userRefBy = registerApplication.referredBy  ;
-                addRefData(registerApplication,userRefBy);
+                // addRefData(registerApplication,userRefBy);
             } catch (err) {
                 res.redirect('/register?success=err')
             }
